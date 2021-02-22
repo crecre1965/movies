@@ -1,0 +1,39 @@
+<h1>les films à l'affiche</h1>
+<input #inputElt (keyup)="searchMovies(inputElt.value)" placeholder="Rechercher ..." text="text" class="form-control sticky-top">
+ 
+<!-- [routerLink]="['/detail', result.id,'results']" -->
+<!-- <li (click)="goToDetailPage(result.id)" -->
+
+<ul class="list-group">
+    <li [routerLink]="['/detail', result.id,'results']"
+        *ngFor="let result of results" 
+        class="list-group-item">
+        {{result.title}}
+    </li>
+</ul>
+
+<div [style.opacity]="getListOpacity()" class="row content">
+    <div  *ngFor="let movie of movies" class="col-12 col-md-3 col-xl-2">
+        <div [routerLink]="['/detail',movie.id,'movies']" class="card">
+            <!-- <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.image" alt=""> -->
+            <img [src]="printImageSrc(movie)" alt="">
+            <div class="card-body">
+                <h2>{{movie.title}}</h2>
+                <p>video : {{movie.video}}</p>
+                <ratings [score]="movie.score/2"></ratings>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center loader">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+    
+
+
+<div class="fixed-bottom bg-info text-center p-2">
+    <button (click)="loadNextMovies()" class="btn btn-light ">Films suivants</button>
+</div>

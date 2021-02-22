@@ -1,0 +1,29 @@
+
+.card{
+    margin: 5px;
+    transition-duration: 1s;
+}
+div.card-body h2{
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
+    font-size:1.2 rem;
+
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+ }
+
+div.content{
+    padding-bottom: 75px;
+}
+.card:hover{
+    transform:scale(1.1)
+}
